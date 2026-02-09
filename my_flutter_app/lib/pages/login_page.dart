@@ -90,12 +90,12 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.deepPurple.shade400,
-              Colors.deepPurple.shade800,
+              Color(0xFF6C63FF),
+              Color(0xFF3B3486),
             ],
           ),
         ),
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Icon(
                       Icons.task_alt,
                       size: 50,
-                      color: Colors.deepPurple.shade800,
+                      color: const Color(0xFF6C63FF),
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintStyle: const TextStyle(color: Colors.white60),
                       prefixIcon: const Icon(Icons.email, color: Colors.white70),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.1),
+                      fillColor: Colors.white.withAlpha(25),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.white30),
@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintStyle: const TextStyle(color: Colors.white60),
                       prefixIcon: const Icon(Icons.lock, color: Colors.white70),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.1),
+                      fillColor: Colors.white.withAlpha(25),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.white30),
@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(0.2),
+                        color: Colors.red.withAlpha(50),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: Colors.red),
                       ),
@@ -238,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                           : Text(
                               _isLogin ? 'Sign In' : 'Sign Up',
                               style: TextStyle(
-                                color: Colors.deepPurple.shade800,
+                                color: const Color(0xFF6C63FF),
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),

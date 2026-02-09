@@ -4,14 +4,28 @@ import 'package:flutter/foundation.dart'
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
-/// To use this, you need to:
-/// 1. Create a Firebase project at https://console.firebase.google.com/
-/// 2. Enable Authentication (Anonymous sign-in)
-/// 3. Enable Cloud Firestore
-/// 4. Run: flutterfire configure
+/// HOW TO SET UP FIREBASE:
+/// 1. Go to https://console.firebase.google.com/
+/// 2. Create a new project (e.g., "my-flutter-task-app")
+/// 3. Add a Web app & Android app from Project Settings
+/// 4. Copy each platform's config values into the fields below
+/// 5. In Firebase Console -> Authentication -> Enable Email/Password & Anonymous
+/// 6. In Firebase Console -> Firestore Database -> Create database (test mode)
 ///
-/// For now, this uses placeholder values that need to be replaced.
+/// OR run:  dart pub global activate flutterfire_cli && flutterfire configure
 class DefaultFirebaseOptions {
+  /// Returns true if Firebase credentials have been configured (not placeholders).
+  static bool get isConfigured {
+    try {
+      final opts = currentPlatform;
+      return !opts.apiKey.startsWith('YOUR_') &&
+          !opts.projectId.startsWith('your-') &&
+          opts.apiKey.isNotEmpty;
+    } catch (_) {
+      return false;
+    }
+  }
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
@@ -37,51 +51,53 @@ class DefaultFirebaseOptions {
     }
   }
 
-  // TODO: Replace these with your actual Firebase project credentials
-  // Run: flutterfire configure
-  // Or get them from Firebase Console > Project Settings > Your apps
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Firebase project: myapp-2cbf3
+  // Project number:   95109614238
+  // ═══════════════════════════════════════════════════════════════════════════
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'YOUR_WEB_API_KEY',
-    appId: '1:000000000000:web:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'your-firebase-project-id',
-    authDomain: 'your-firebase-project-id.firebaseapp.com',
-    storageBucket: 'your-firebase-project-id.appspot.com',
+    apiKey: 'AIzaSyDXB7BvcWPKXGHKFYo8cz4J2zaehw3s8qI',
+    appId: '1:95109614238:web:4e1ab10db16569fdaa098f',
+    messagingSenderId: '95109614238',
+    projectId: 'myapp-2cbf3',
+    authDomain: 'myapp-2cbf3.firebaseapp.com',
+    storageBucket: 'myapp-2cbf3.firebasestorage.app',
+    measurementId: 'G-FV9YMTCDVF',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_ANDROID_API_KEY',
-    appId: '1:000000000000:android:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'your-firebase-project-id',
-    storageBucket: 'your-firebase-project-id.appspot.com',
+    apiKey: 'AIzaSyDXB7BvcWPKXGHKFYo8cz4J2zaehw3s8qI',
+    appId: '1:95109614238:android:4e1ab10db16569fdaa098f',
+    messagingSenderId: '95109614238',
+    projectId: 'myapp-2cbf3',
+    storageBucket: 'myapp-2cbf3.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR_IOS_API_KEY',
-    appId: '1:000000000000:ios:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'your-firebase-project-id',
-    storageBucket: 'your-firebase-project-id.appspot.com',
+    apiKey: 'AIzaSyDXB7BvcWPKXGHKFYo8cz4J2zaehw3s8qI',
+    appId: '1:95109614238:ios:4e1ab10db16569fdaa098f',
+    messagingSenderId: '95109614238',
+    projectId: 'myapp-2cbf3',
+    storageBucket: 'myapp-2cbf3.firebasestorage.app',
     iosBundleId: 'com.example.myFlutterApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'YOUR_MACOS_API_KEY',
-    appId: '1:000000000000:macos:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'your-firebase-project-id',
-    storageBucket: 'your-firebase-project-id.appspot.com',
+    apiKey: 'AIzaSyDXB7BvcWPKXGHKFYo8cz4J2zaehw3s8qI',
+    appId: '1:95109614238:macos:4e1ab10db16569fdaa098f',
+    messagingSenderId: '95109614238',
+    projectId: 'myapp-2cbf3',
+    storageBucket: 'myapp-2cbf3.firebasestorage.app',
     iosBundleId: 'com.example.myFlutterApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'YOUR_WINDOWS_API_KEY',
-    appId: '1:000000000000:windows:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'your-firebase-project-id',
-    storageBucket: 'your-firebase-project-id.appspot.com',
+    apiKey: 'AIzaSyDXB7BvcWPKXGHKFYo8cz4J2zaehw3s8qI',
+    appId: '1:95109614238:windows:4e1ab10db16569fdaa098f',
+    messagingSenderId: '95109614238',
+    projectId: 'myapp-2cbf3',
+    storageBucket: 'myapp-2cbf3.firebasestorage.app',
   );
 }
 
