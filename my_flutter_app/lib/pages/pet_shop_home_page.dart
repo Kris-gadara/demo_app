@@ -98,7 +98,7 @@ class _PetShopHomePageState extends State<PetShopHomePage> {
           // Trending products horizontal scroll
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 200,
+              height: 230,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -167,7 +167,7 @@ class _PetShopHomePageState extends State<PetShopHomePage> {
               ),
               const SizedBox(width: 12),
               const Text(
-                'Bebet',
+                'Pet Shop',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
