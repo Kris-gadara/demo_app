@@ -1,33 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'firebase_options.dart';
-import 'pages/login_page.dart';
-import 'pages/home_page.dart';
-import 'pages/demo_home_page.dart';
+import 'pages/pet_shop_home_page.dart';
 
-bool firebaseReady = false;
-
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Only attempt Firebase init if real credentials are configured
-  if (DefaultFirebaseOptions.isConfigured) {
-    try {
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-      firebaseReady = true;
-      debugPrint('✅ Firebase initialized successfully');
-    } catch (e) {
-      debugPrint('⚠️ Firebase initialization failed: $e');
-      firebaseReady = false;
-    }
-  } else {
-    debugPrint('ℹ️ Firebase not configured — running in Demo Mode');
-    debugPrint('   To enable Firebase, update lib/firebase_options.dart');
-  }
-
   runApp(const MyApp());
 }
 
@@ -37,41 +12,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TaskFlow',
+      title: 'Pet Shop',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6C63FF),
+          seedColor: const Color(0xFFFF6B6B),
           brightness: Brightness.light,
         ),
         useMaterial3: true,
         fontFamily: 'Roboto',
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6C63FF),
-          brightness: Brightness.dark,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
         ),
-        useMaterial3: true,
-        fontFamily: 'Roboto',
       ),
-      themeMode: ThemeMode.light,
-      home: firebaseReady
-          ? StreamBuilder<User?>(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Scaffold(
-                    body: Center(child: CircularProgressIndicator()),
-                  );
-                }
-                if (snapshot.hasData) {
-                  return const HomePage();
-                }
-                return const LoginPage();
-              },
-            )
-          : const DemoHomePage(),
+      home: const PetShopHomePage(),
     );
   }
 }

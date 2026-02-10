@@ -660,9 +660,7 @@ class _DemoHomePageState extends State<DemoHomePage>
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Tasks are stored locally and will be lost on app restart. '
-                    'To enable cloud sync, configure Firebase in '
-                    'lib/firebase_options.dart.',
+                    'Tasks are stored locally and will be lost on app restart.',
                     style: TextStyle(fontSize: 13, color: Color(0xFF555555)),
                   ),
                 ],
@@ -876,7 +874,7 @@ class _DemoHomePageState extends State<DemoHomePage>
         const Text(
           'A beautiful task management app built with Flutter.\n\n'
           'Features:\n• Create & manage tasks\n• Categorize tasks\n'
-          '• Track progress\n• Firebase integration (optional)',
+          '• Track progress',
         ),
       ],
     );
